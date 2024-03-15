@@ -1,7 +1,10 @@
 import React, { useRef } from 'react'
 import Input from './Input.jsx'
+import Modal from './Modal.jsx';
 
 const NewProject = ({onAdd}) => {
+
+  const modal=useRef();
 
   const title=useRef();
   const description=useRef();
@@ -12,6 +15,13 @@ const NewProject = ({onAdd}) => {
     const enteredDescription=description.current.value;
     const enteredDueDate=dueDate.current.value;
 
+    if (enteredTitle.trim() === '' 
+    || enteredDescription.trim() ==='' 
+    || enteredDueDate.trim()=== '') {
+      modal.current.open()
+      return;
+    }
+
     onAdd({
       title: enteredTitle,
       description: enteredDescription,
@@ -20,6 +30,10 @@ const NewProject = ({onAdd}) => {
   }
 
   return (
+    <>
+    <Modal ref={modal} buttonCaption="okay">
+      <h2>Invalid input</h2>
+    </Modal>
     <div className='w-[35rem] mt-60'>
       <menu className='flex items-center justify-end gap-4 my-4'>
         <li>
@@ -51,6 +65,7 @@ const NewProject = ({onAdd}) => {
         />
       </div>
     </div>
+    </>
   )
 }
 
