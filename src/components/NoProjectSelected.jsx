@@ -4,7 +4,7 @@ import Button from './Button'
 
 const NoProjectSelected = ({onStartAddProject}) => {
   return (
-    <div className='mt-2 text-center w-2/3'>
+    <div className='mt-20 text-center w-2/3'>
       <img 
         src={NoProjectsImg} 
         className='w-16 h-16 object-contain mx-auto'/>
