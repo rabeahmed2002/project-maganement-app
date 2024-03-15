@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Input from './Input.jsx'
 import Modal from './Modal.jsx';
 
-const NewProject = ({onAdd}) => {
+const NewProject = ({onAdd, onCancel}) => {
 
   const modal=useRef();
 
@@ -32,12 +32,14 @@ const NewProject = ({onAdd}) => {
   return (
     <>
     <Modal ref={modal} buttonCaption="okay">
-      <h2>Invalid input</h2>
+      <h2 className='text-xl font-bold text-stone-700 my-4'>Invalid input</h2>
+      <p className='text-stone-600 mb-4'>Oops... looks like you forgot to enter the value</p>
+      <p className='text-stone-600 mb-4'>Please make sure you enter a valid inut value</p>
     </Modal>
     <div className='w-[35rem] mt-60'>
       <menu className='flex items-center justify-end gap-4 my-4'>
         <li>
-            <button className='text-stone-800 hover:text-stone-950'>Cancel</button>
+            <button className='text-stone-800 hover:text-stone-950' onClick={onCancel}>Cancel</button>
         </li>
         <li>
             <button 
